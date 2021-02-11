@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  mountain_id: MyString
+  rating: MyString
+  comment: MyString
+  date: MyString
+  percent_hiked: MyString
+  hiked: MyString
+
+two:
+  user_id: MyString
+  mountain_id: MyString
+  rating: MyString
+  comment: MyString
+  date: MyString
+  percent_hiked: MyString
+  hiked: MyString

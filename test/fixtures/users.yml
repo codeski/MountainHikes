@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  hikes_completed: MyString
+  hikes_incomplete: MyString
+  total_elevation: MyString
+  total_distance: MyString
+  admin: MyString
+  password_digest: MyString
+  uid: MyString
+  provider: MyString
+  email: MyString
+
+two:
+  username: MyString
+  hikes_completed: MyString
+  hikes_incomplete: MyString
+  total_elevation: MyString
+  total_distance: MyString
+  admin: MyString
+  password_digest: MyString
+  uid: MyString
+  provider: MyString
+  email: MyString
