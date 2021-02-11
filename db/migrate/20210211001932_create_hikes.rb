@@ -1,13 +1,13 @@
 class CreateHikes < ActiveRecord::Migration[6.1]
   def change
     create_table :hikes do |t|
-      t.string :user_id
-      t.string :mountain_id
-      t.string :rating
+      t.integer :user_id
+      t.integer :mountain_id
+      t.integer :rating
       t.string :comment
-      t.string :date
-      t.string :percent_hiked
-      t.string :hiked
+      t.date :date_hiked
+      t.integer :percent_hiked
+      t.boolean :hiked, default = false
 
       t.timestamps
     end
