@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
 
   get '/signup', to: 'users#new'
+
+  get "/logout", to: 'sessions#destroy'
   
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   
