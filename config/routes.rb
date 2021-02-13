@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'users#show'
 
-  get '/login', to: 'sessions#new'
+  get '/signin', to: 'sessions#new'
 
   get '/signup', to: 'users#new'
   
