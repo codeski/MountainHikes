@@ -1,6 +1,6 @@
 <h1>Sign In</h1>
 <%= render 'users/error' %>
-<%= form_for @user do |f| %>
+<%= form_for @user, url: '/sessions', method: :post do |f| %>
     <%= f.label :email %>
     <%= f.text_field :email %><br><br>
     <%= f.label :password %>
