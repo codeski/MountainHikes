@@ -21,6 +21,22 @@ class SessionsController < ApplicationController
     end
     
     def omniauth
-        byebug
+        user = User.create_from_omniauth(auth)
+
+        if user.valid?
+            session[:user_id] = user.id
+            redirect_to user_path(user)
+        else
+            flash[:message] = user.errors.fullmessages.join("")
+            redirect_to '/signup'
+        end
     end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
+    end
+
+    
 end
