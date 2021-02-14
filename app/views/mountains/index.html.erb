@@ -1,3 +1,5 @@
+All Mountains - admin can create and edit
+
 <% @mountains.each do |m| %>
     <%= m.name %>
     <%= m.city %>
@@ -9,3 +11,8 @@
 
     <%= link_to "Take this hike", new_mountain_hike_path(m, Hike.new) %>
 <% end %>
+
+<% if current_user.admin %>
+    <%= link_to "Create Mountain", new_mountain_path %>
+<% end %>
+
