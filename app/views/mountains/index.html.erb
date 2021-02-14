@@ -1,0 +1,11 @@
+<% @mountains.each do |m| %>
+    <%= m.name %>
+    <%= m.city %>
+    <%= m.state %> 
+    <%= m.summit_elevation %>
+    <%= m.base_elevation %> 
+    <%= m.hike_distance %>
+    <%= m.directions_url %>
+
+    <%= link_to "Take this hike", new_mountain_hike_path(m, Hike.new) %>
+<% end %>
