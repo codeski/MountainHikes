@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
 
-  get "/logout", to: 'sessions#destroy'
+  get "/signout", to: 'sessions#destroy'
   
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   

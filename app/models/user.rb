@@ -3,8 +3,8 @@ class User < ApplicationRecord
     has_many :mountains, through: :hikes
 
     has_secure_password
-    validates :username, :email, presence: true
-    validates :email, uniqueness: true
+    # validates :username, :email, presence: true
+    # validates :email, uniqueness: true
 
     def self.create_from_omniauth(auth)
         User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|

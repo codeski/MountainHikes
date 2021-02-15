@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        if !current_user.nil?
+        if current_user
         else
-          redirect_to '/'
+          redirect_to '/signin'
         end
     end
 
