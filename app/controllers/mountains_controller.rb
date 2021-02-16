@@ -15,7 +15,7 @@ class MountainsController < ApplicationController
     def create
         @mountain = Mountain.new(mountain_params)
 
-        if @moutain.save
+        if @mountain.save
             redirect_to mountain_path(@mountain)
         else
             render :new
@@ -25,7 +25,7 @@ class MountainsController < ApplicationController
     def update 
         @mountain = Mountain.find_by(id: params[:id])
 
-        if @moutain.save
+        if @mountain.save
             redirect_to mountain_path(@mountain)
         else
             render :edit
@@ -34,6 +34,6 @@ class MountainsController < ApplicationController
 
     private
     def mountain_params
-        params.require[:mountain].permit[:base_elevation, :summit_elevation, :name, :city, :state, :direction_url, :hike_distance]
+        params.require(:mountain).permit(:base_elevation, :summit_elevation, :name, :city, :state, :direction_url, :hike_distance)
     end
 end

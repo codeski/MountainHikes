@@ -1,15 +1,16 @@
-All Mountains - admin can create and edit
+<br><br>
+All Mountains - admin can create and edit<br><br>
 
 <% @mountains.each do |m| %>
-    <%= m.name %>
-    <%= m.city %>
-    <%= m.state %> 
-    <%= m.summit_elevation %>
-    <%= m.base_elevation %> 
-    <%= m.hike_distance %>
-    <%= m.directions_url %>
-
-    <%= link_to "Take this hike", new_mountain_hike_path(m, Hike.new) %>
+    Mountain: <%= link_to m.name, mountain_path(m) %><br>
+    City: <%= m.city %><br>
+    State: <%= m.state %> <br>
+    Summit Elevation: <%= m.summit_elevation %><br>
+    Base Elevation: <%= m.base_elevation %> <br>
+    Distance: <%= m.hike_distance %><br>
+    Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
+    
+    <%= link_to "Take this hike", new_mountain_hike_path(m) %><br><br>
 <% end %>
 
 <% if current_user.admin %>

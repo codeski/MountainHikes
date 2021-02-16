@@ -12,6 +12,7 @@
       <%= link_to "Sign Up", new_user_path %><br>
     <% else %> 
       <%= link_to "My Page", user_path(current_user) %>
+      <%= link_to "View all Montains", mountains_path %>
       <%= link_to "Sign Out", '/signout' %>
     <% end %>
 
