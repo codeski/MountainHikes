@@ -1,11 +1,13 @@
 class MountainsController < ApplicationController
 
+    before_actoin :set_mountain, only: [:show, :edit, :update, :destroy]
+    
     def index
         @mountains = Mountain.all
     end
 
     def show
-        @mountain = Mountain.find_by(id: params[:id])
+
     end
 
     def new
@@ -22,9 +24,11 @@ class MountainsController < ApplicationController
         end
     end
 
-    def update 
-        @mountain = Mountain.find_by(id: params[:id])
+    def edit
 
+    end
+
+    def update 
         if @mountain.save
             redirect_to mountain_path(@mountain)
         else
@@ -32,8 +36,17 @@ class MountainsController < ApplicationController
         end
     end
 
+    def destroy
+        @mountain.destroy
+        redirect_to mountains_path
+    end
+
     private
     def mountain_params
         params.require(:mountain).permit(:base_elevation, :summit_elevation, :name, :city, :state, :direction_url, :hike_distance)
+    end
+
+    def set_mountain
+        @mountain = Mountain.find_by_id(params[:id])
     end
 end
