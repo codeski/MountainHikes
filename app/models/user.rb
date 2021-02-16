@@ -14,4 +14,8 @@ class User < ApplicationRecord
         end
     end
 
+    def total_distance
+        current_user.total_distance = @mountain.hike_distance * (@hike.hike_percentage)
+    end
+
 end

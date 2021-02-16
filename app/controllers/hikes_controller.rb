@@ -1,12 +1,17 @@
 class HikesController < ApplicationController
 
     def new
+        @mountain = Mountain.find_by_id(params[:mountain_id])
         @hike = Hike.new
     end
 
     def create
+        @mountain = Mountain.find_by_id(params[:mountain_id])
+
         @hike = Hike.new(hike_params)
-        @hike = @hike.mountain.build
+        @hike.user_id = current_user.id
+        @hike.mountain_id = @mountain.id
+        
         if @hike.save
             redirect_to user_path(current_user)
         else

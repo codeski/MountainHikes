@@ -1,20 +1,24 @@
 <br><br>
-Hi, <%= @user.username %><br><br>
-Total Distance: <%= @user.total_distance %><br><br>
-Total Elevation Gain: <%= @user.total_elevation %><br><br>
-# of hikes: <% if @user.hikes.count > 0 %>
-                <%= link_to @user.hikes.count, hikes_path %><br><br>
+Hi, <%= current_user.username %><br><br>
+Total Distance: <%= current_user.mountains.sum(:hike_distance) %><br><br>
+Total Elevation Gain: <%= current_user.total_elevation %><br><br>
+
+My Hikes: <br>
+<% if current_user.hikes && @hikes = current_user.hikes.where(hiked: true) %>
+                <% @hikes.each do |h| %>
+                    <%= link_to h.mountain.name, hike_path(h) %><br>
+                <% end %>
             <% else %>
-                <%= link_to "Find your first mountain to hike", mountains_path %>
-            <% end %>
+                <%= link_to "Find your first mountain to hike", mountains_path %><br><br>
+            <% end %><br><br>
 
 
-moutains.all 
+Saved Mountains: <br>
+<% if @hikes = current_user.hikes.where(hiked: false) %>
+    <% @hikes.each do |h| %>
+        <%= link_to h.mountain.name, mountain_path(h.mountain) %><br>
+    <% end %>
+<% end %>
 
-Search Mountinas link on top <br><br>
-
-saved moutains to hike 
-
-mountain/3/hikes/1 T or F
 
 
