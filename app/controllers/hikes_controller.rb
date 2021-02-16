@@ -1,5 +1,11 @@
 class HikesController < ApplicationController
 
+    before_action :set_hike, only: [:show, :edit, :update, :destroy]
+
+    def show
+        
+    end
+    
     def new
         @mountain = Mountain.find_by_id(params[:mountain_id])
         @hike = Hike.new
@@ -19,25 +25,29 @@ class HikesController < ApplicationController
         end
     end
 
-    def update
-        @hike = Hike.find_by_id(params[:id])
+    def edit
         
-        @mountain = @hike.mountain 
-        if @hike.update
-            redirect_to hikes_path
+    end
+
+    def update
+        if @hike.update(hike_params)
+            redirect_to hike_path(@hike)
         else
             render :edit
         end
     end
 
     def destroy
-        @hike = Hike.find_by_id(params[:id])
         @hike.destroy
-        redirect_to hikes_path
+        redirect_to user_path(current_user)
     end
 
     private
     def hike_params
         params.require(:hike).permit(:user_id, :mountain_id, :rating, :comment, :date_hiked, :percent_hiked, :hiked)
+    end
+
+    def set_hike
+        @hike = Hike.find_by_id(params[:id])
     end
 end
