@@ -1,5 +1,5 @@
 <br><br>
-All Mountains - admin can create and edit<br><br>
+All Mountains<br><br>
 
 <% @mountains.each do |m| %>
     Mountain: <%= link_to m.name, mountain_path(m) %><br>
@@ -10,7 +10,7 @@ All Mountains - admin can create and edit<br><br>
     Distance: <%= m.hike_distance %><br>
     Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
     
-    <%= link_to "Take this hike", new_mountain_hike_path(m) %><br><br>
+    <%= link_to "Take this hike", new_mountain_hike_path(m) %><br><br><br><br>
 <% end %>
 
 <% if current_user.admin %>

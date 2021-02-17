@@ -11,4 +11,6 @@
     Percent hiked: <%= @hike.percent_hiked %><br>
 
     <%= link_to "Edit Hike", edit_hike_path(@hike) %><br><br>
-    <%= link_to "Delete Hike", hike_path(@hike), method: :delete %>
+    <%= form_tag(hike_path(@hike.id), method: :delete) do %>
+        <%= submit_tag "Delete Hike"%>
+    <% end %>

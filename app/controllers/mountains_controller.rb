@@ -1,7 +1,7 @@
 class MountainsController < ApplicationController
 
-    before_actoin :set_mountain, only: [:show, :edit, :update, :destroy]
-    
+    before_action :set_mountain, only: [:show, :edit, :update, :destroy]
+
     def index
         @mountains = Mountain.all
     end
@@ -29,7 +29,7 @@ class MountainsController < ApplicationController
     end
 
     def update 
-        if @mountain.save
+        if @mountain.update(mountain_params)
             redirect_to mountain_path(@mountain)
         else
             render :edit
