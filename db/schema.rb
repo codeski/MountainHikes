@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_002218) do
+ActiveRecord::Schema.define(version: 2021_02_17_213201) do
 
   create_table "hikes", force: :cascade do |t|
     t.integer "user_id"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_11_002218) do
     t.string "comment"
     t.date "date_hiked"
     t.integer "percent_hiked", default: 100
-    t.boolean "hiked", default: false
+    t.integer "total_distance", default: 0
+    t.integer "total_elevation_gain", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -32,6 +33,14 @@ ActiveRecord::Schema.define(version: 2021_02_11_002218) do
     t.string "state"
     t.string "directions_url"
     t.integer "hike_distance"
+    t.boolean "saved", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reserves", force: :cascade do |t|
+    t.integer "mountain_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

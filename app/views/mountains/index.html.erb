@@ -13,6 +13,8 @@ All Mountains<br><br>
     <%= link_to "Take this hike", new_mountain_hike_path(m) %><br><br><br><br>
 <% end %>
 
+<%= link_to "Save Mountain", reserves_path(reserve: {user_id: current_user.id, mountain_id}), method: :post %>
+
 <% if current_user.admin %>
     <%= link_to "Create Mountain", new_mountain_path %>
 <% end %>

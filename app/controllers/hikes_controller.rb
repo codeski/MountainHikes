@@ -17,6 +17,7 @@ class HikesController < ApplicationController
         @hike = Hike.new(hike_params)
         @hike.user_id = current_user.id
         @hike.mountain_id = @mountain.id
+        total_distance_elevation(@mountain)
         
         if @hike.save
             redirect_to user_path(current_user)
@@ -31,6 +32,7 @@ class HikesController < ApplicationController
 
     def update
         if @hike.update(hike_params)
+            @hike.total_hike_elvation = @hike.summit_elevation - @hike.base_elevatoin
             redirect_to hike_path(@hike)
         else
             render :edit

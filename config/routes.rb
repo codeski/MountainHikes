@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :hikes, shallow: true #new, index, create
   end
 
+  resources :mountains do
+    resources :reserves, shallow: true #new, index, create
+  end
+
   get 'home', to: 'users#home'
   
   resources :users, only: [:new, :create, :show]

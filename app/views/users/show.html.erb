@@ -4,21 +4,20 @@ Total Distance: <%= current_user.mountains.sum(:hike_distance) %><br><br>
 Total Elevation Gain: <%= current_user.total_elevation %><br><br>
 
 My Hikes: <br>
-<% if current_user.hikes && @hikes = current_user.hikes.where(hiked: true) %>
-                <% @hikes.each do |h| %>
-                    <%= link_to h.mountain.name, hike_path(h) %><br>
-                <% end %>
-            <% else %>
-                <%= link_to "Find your first mountain to hike", mountains_path %><br><br>
-            <% end %><br><br>
+<% if current_user.hikes %>
+    <% current_user.hikes.each do |h| %>
+        <%= link_to h.mountain.name, hike_path(h) %><br>
+    <% end %>
+<% else %>
+    <%= link_to "Find your first mountain to hike", mountains_path %><br><br>
+<% end %><br><br>
 
 
 Saved Mountains: <br>
-<% if @hikes = current_user.hikes.where(hiked: false) %>
-    <% @hikes.each do |h| %>
-        <%= link_to h.mountain.name, mountain_path(h.mountain) %><br>
+<% if current_user.reserves %>
+    <% current_user.reserves.each do |r| %>
+        <%= link_to r.mountain.name, mountain_path(r.mountain) %><br>
     <% end %>
+<% else %>
+    You have no saved mountains
 <% end %>
-
-
-

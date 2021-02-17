@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :reserves
+    has_many :users, through: :reserves
     has_many :hikes
     has_many :mountains, through: :hikes
 
@@ -14,8 +16,6 @@ class User < ApplicationRecord
         end
     end
 
-    def total_distance
-        current_user.total_distance = @mountain.hike_distance * (@hike.hike_percentage)
-    end
+
 
 end
