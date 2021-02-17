@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2021_02_17_213201) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "links", force: :cascade do |t|
+    t.integer "mountain_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "mountains", force: :cascade do |t|
     t.integer "base_elevation"
     t.integer "summit_elevation"
@@ -34,13 +41,6 @@ ActiveRecord::Schema.define(version: 2021_02_17_213201) do
     t.string "directions_url"
     t.integer "hike_distance"
     t.boolean "saved", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reserves", force: :cascade do |t|
-    t.integer "mountain_id"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

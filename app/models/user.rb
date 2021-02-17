@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :reserves
-    has_many :users, through: :reserves
+    has_many :links
+    has_many :users, through: :links
     has_many :hikes
     has_many :mountains, through: :hikes
 
@@ -15,7 +15,4 @@ class User < ApplicationRecord
             u.password = SecureRandom.hex
         end
     end
-
-
-
 end

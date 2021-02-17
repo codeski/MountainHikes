@@ -1,6 +1,6 @@
-class CreateReserves < ActiveRecord::Migration[6.1]
+class CreateLinks < ActiveRecord::Migration[6.1]
   def change
-    create_table :reserves do |t|
+    create_table :links do |t|
       t.integer :mountain_id
       t.integer :user_id
 

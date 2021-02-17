@@ -14,8 +14,8 @@ My Hikes: <br>
 
 
 Saved Mountains: <br>
-<% if current_user.reserves %>
-    <% current_user.reserves.each do |r| %>
+<% if current_user.links %>
+    <% current_user.links.each do |r| %>
         <%= link_to r.mountain.name, mountain_path(r.mountain) %><br>
     <% end %>
 <% else %>

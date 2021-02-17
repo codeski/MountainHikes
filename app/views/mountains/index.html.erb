@@ -10,10 +10,9 @@ All Mountains<br><br>
     Distance: <%= m.hike_distance %><br>
     Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
     
-    <%= link_to "Take this hike", new_mountain_hike_path(m) %><br><br><br><br>
+    <%= link_to "Take this hike", new_mountain_hike_path(m) %><br>
+    <%= link_to "Save this hike", links_path(links: {user_id: current_user.id, mountain_id: m.id}), method: :post %><br><br><br>
 <% end %>
-
-<%= link_to "Save Mountain", reserves_path(reserve: {user_id: current_user.id, mountain_id}), method: :post %>
 
 <% if current_user.admin %>
     <%= link_to "Create Mountain", new_mountain_path %>
