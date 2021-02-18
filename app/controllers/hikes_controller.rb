@@ -29,7 +29,7 @@ class HikesController < ApplicationController
     end
 
     def edit
-        
+
     end
 
     def update
@@ -40,7 +40,7 @@ class HikesController < ApplicationController
             elevation_gain = @mountain.summit_elevation - @mountain.base_elevation
             @hike.total_elevation_gain = @hike.percent_hiked.to_f / 100 * elevation_gain
             @hike.save
-            
+
             redirect_to hike_path(@hike)
         else
             render :edit

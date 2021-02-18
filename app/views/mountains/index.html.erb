@@ -10,11 +10,11 @@ All Mountains<br><br>
     Distance: <%= m.hike_distance %><br>
     Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
     
-    <%= link_to "I hiked #{m.name}", new_mountain_hike_path(m) %><br>
+    <%= link_to "Review #{m.name} hike", new_mountain_hike_path(m) %><br>
     <% if @link = current_user.links.where(mountain_id: m.id).first %>   
         Link saved to profile<br><br><br>
     <% else %>
-        <%= link_to "Save this hike", new_mountain_link_path(m) %><br><br><br>
+        <%= button_to "Save this hike", mountain_links_path(m, link: { mountain_id: m.id, user_id: current_user.id }) %><br><br><br>
     <% end %>
 <% end %>
 
