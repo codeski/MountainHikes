@@ -8,6 +8,8 @@ Base Elevation: <%= @mountain.base_elevation %> <br>
 Distance: <%= @mountain.hike_distance %><br>
 Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><br><br>
 
+<%= link_to "Take this hike", new_mountain_hike_path(@mountain) %><br>
+
 <% if current_user.admin %>
     <%= link_to "Edit Mountain", edit_mountain_path(@mountain) %><br>
     <%= form_tag(mountain_path(@mountain.id), method: :delete) do %>
@@ -17,9 +19,9 @@ Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><b
 
 <h2>Reviews:</h2>
 <p>
-    <% if @mountain.hikes.count > 0 %>
-        <% @hikes.each do |h| %>
-            <h4><%= h.date_hiked.to_s + " Username: " + h.user.username + ", Rating: " + h.rating.to_s %></h4>
+    <% if @mountain.hikes %>
+        <% @mountain.hikes.each do |h| %>
+            <h4><%= h.date_hiked.to_s + " Username: " + h.user.username + ", Rating: " + h.rating.to_s + "/5" %></h4>
             <%= h.comment %><br><br>
         <% end %>
     <% else %>

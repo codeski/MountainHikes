@@ -1,16 +1,16 @@
-class LinkController < ApplicationController
+class LinksController < ApplicationController
 
     before_action :set_link, only: :destroy
     
     def new
         @mountain = Mountain.find_by_id(params[:mountain_id])
-        @link = link.new
+        @link = Link.new
     end
 
     def create
         @mountain = Mountain.find_by_id(params[:mountain_id])
 
-        @link = Link.new(link_params)
+        @link = Link.new
         @link.user_id = current_user.id
         @link.mountain_id = @mountain.id
         

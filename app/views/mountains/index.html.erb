@@ -11,7 +11,14 @@ All Mountains<br><br>
     Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
     
     <%= link_to "Take this hike", new_mountain_hike_path(m) %><br>
-    <%= link_to "Save this hike", links_path(links: {user_id: current_user.id, mountain_id: m.id}), method: :post %><br><br><br>
+    <% if !current_user.links.where(mountain_id: m.id).any? %>   
+        <%= link_to "Save this hike", new_mountain_link_path(m) %><br><br><br>
+    <% else %>
+        <% @link = current_user.links.where(mountain_id: m.id).first %>
+        <%= form_tag(link_path(@link), method: :delete) do %>
+            <%= submit_tag "Unsave Link"%>
+        <% end %><br> <br><br><br>
+    <% end %>
 <% end %>
 
 <% if current_user.admin %>

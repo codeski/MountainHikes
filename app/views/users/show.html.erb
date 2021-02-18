@@ -15,8 +15,11 @@ My Hikes: <br>
 
 Saved Mountains: <br>
 <% if current_user.links %>
-    <% current_user.links.each do |r| %>
-        <%= link_to r.mountain.name, mountain_path(r.mountain) %><br>
+    <% current_user.links.each do |l| %>
+        <%= link_to l.mountain.name, mountain_path(l.mountain) %><br>
+        <%= form_tag(link_path(l), method: :delete) do %>
+            <%= submit_tag "Unsave Link"%>
+        <% end %><br>
     <% end %>
 <% else %>
     You have no saved mountains

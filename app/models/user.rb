@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :links
-    has_many :users, through: :links
+    has_many :mountains, through: :links
     has_many :hikes
     has_many :mountains, through: :hikes
 
