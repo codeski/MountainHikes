@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_02_17_213201) do
     t.string "comment"
     t.date "date_hiked"
     t.integer "percent_hiked", default: 100
-    t.integer "total_distance", default: 0
-    t.integer "total_elevation_gain", default: 0
+    t.float "total_distance", default: 0.0
+    t.float "total_elevation_gain", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

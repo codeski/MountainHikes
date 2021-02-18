@@ -8,7 +8,7 @@ Base Elevation: <%= @mountain.base_elevation %> <br>
 Distance: <%= @mountain.hike_distance %><br>
 Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><br><br>
 
-<%= link_to "Take this hike", new_mountain_hike_path(@mountain) %><br>
+<%= link_to "I hiked #{@mountain.name}", new_mountain_hike_path(@mountain) %><br>
 
 <% if current_user.admin %>
     <%= link_to "Edit Mountain", edit_mountain_path(@mountain) %><br>

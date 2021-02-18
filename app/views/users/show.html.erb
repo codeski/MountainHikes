@@ -1,7 +1,7 @@
 <br><br>
 Hi, <%= current_user.username %><br><br>
-Total Distance: <%= current_user.mountains.sum(:hike_distance) %><br><br>
-Total Elevation Gain: <%= current_user.total_elevation %><br><br>
+Total Distance: <%= current_user.hikes.sum(:total_distance) %><br><br>
+Total Elevation Gain: <%= current_user.hikes.sum(:total_elevation_gain) %><br><br>
 
 My Hikes: <br>
 <% if current_user.hikes %>

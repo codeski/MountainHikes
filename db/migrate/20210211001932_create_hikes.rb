@@ -7,8 +7,8 @@ class CreateHikes < ActiveRecord::Migration[6.1]
       t.string :comment
       t.date :date_hiked
       t.integer :percent_hiked, default: 100
-      t.integer :total_distance, default: 0
-      t.integer :total_elevation_gain, default: 0
+      t.float :total_distance, default: 0
+      t.float :total_elevation_gain, default: 0
 
       t.timestamps
     end
