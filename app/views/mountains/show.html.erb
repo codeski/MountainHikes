@@ -1,6 +1,6 @@
 <br><br>
 <h1><%= @mountain.name %><br></h1>
-Rating: <%= @mountain.hikes.average(:rating) %> /5<br>
+Rating: <%= @mountain.display_rating %> /5<br>
 City: <%= @mountain.city %><br>
 State: <%= @mountain.state %> <br>
 Summit Elevation: <%= @mountain.summit_elevation %><br>
@@ -20,7 +20,7 @@ Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><b
 <h2>Reviews:</h2>
 <p>
     <% if @mountain.hikes %>
-        <% @mountain.hikes.each do |h| %>
+        <% @mountain.hikes.order_by_date.each do |h| %>
             <h4><%= h.date_hiked.to_s + " Username: " + h.user.username + ", Rating: " + h.rating.to_s + "/5" %></h4>
             <%= h.comment %><br><br>
         <% end %>
