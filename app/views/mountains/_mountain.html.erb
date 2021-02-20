@@ -1,17 +1,19 @@
-<%= form_for @mountain do |f| %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
-    <%= f.label :city %><br>
-    <%= f.text_field :city %><br>
-    <%= f.label :state %><br>
-    <%= f.text_field :state %><br>
-    <%= f.label :base_elevation %><br>
-    <%= f.number_field :base_elevation %><br>
-    <%= f.label :summit_elevation %><br>
-    <%= f.number_field :summit_elevation %><br>
-    <%= f.label :hike_distance %><br>
-    <%= f.number_field :hike_distance %><br>
-    <%= f.label :directions_url %><br>
-    <%= f.text_field :directions_url %><br><br>
-    <%= f.submit %>
-<% end %>
+    Mountain: <%= link_to mountain.name, mountain_path(mountain) %><br>
+    City: <%= mountain.city %><br>
+    State: <%= mountain.state %> <br>
+    Summit Elevation: <%= mountain.summit_elevation %><br>
+    Base Elevation: <%= mountain.base_elevation %> <br>
+    Distance: <%= mountain.hike_distance %><br>
+    Directions: <%= link_to "Click", mountain.directions_url, target: "_blank" %><br><br>
+    
+    <% if @hike = current_user.hikes.where(mountain_id: mountain.id).first %>
+        You have already reviewed this mountain<br>
+    <% else %> 
+        <%= link_to "Review #{mountain.name} hike", new_mountain_hike_path(mountain) %><br>
+    <% end %>
+    
+    <% if @link = current_user.links.where(mountain_id: mountain.id).first %>   
+        Link saved to profile<br><br><br>
+    <% else %>
+        <%= button_to "Save this hike", mountain_links_path(mountain, link: { mountain_id: mountain.id, user_id: current_user.id }) %><br><br><br>
+    <% end %>

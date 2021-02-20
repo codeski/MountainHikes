@@ -15,4 +15,15 @@ class User < ApplicationRecord
             u.password = SecureRandom.hex
         end
     end
+
+    def display_total_distance
+        display = "#{self.hikes.sum(:total_distance)}".split(".")
+        only_tenth(display)
+    end
+
+    def display_elevation_gain
+        display = "#{self.hikes.sum(:total_elevation_gain)}".split(".")
+        only_tenth(display)
+    end
+
 end

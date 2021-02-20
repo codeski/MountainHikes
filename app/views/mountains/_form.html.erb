@@ -1,0 +1,17 @@
+<%= form_for @mountain do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label :city %><br>
+    <%= f.text_field :city %><br>
+    <%= f.label :state %><br>
+    <%= f.text_field :state %><br>
+    <%= f.label :base_elevation %><br>
+    <%= f.number_field :base_elevation %><br>
+    <%= f.label :summit_elevation %><br>
+    <%= f.number_field :summit_elevation %><br>
+    <%= f.label :hike_distance %><br>
+    <%= f.number_field :hike_distance %><br>
+    <%= f.label :directions_url %><br>
+    <%= f.text_field :directions_url %><br><br>
+    <%= f.submit %>
+<% end %>

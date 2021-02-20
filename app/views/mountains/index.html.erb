@@ -1,22 +1,7 @@
 <br><br>
 All Mountains, list by elevation <br><br>
 
-<% @mountains.each do |m| %>
-    Mountain: <%= link_to m.name, mountain_path(m) %><br>
-    City: <%= m.city %><br>
-    State: <%= m.state %> <br>
-    Summit Elevation: <%= m.summit_elevation %><br>
-    Base Elevation: <%= m.base_elevation %> <br>
-    Distance: <%= m.hike_distance %><br>
-    Directions: <%= link_to "Click", m.directions_url, target: "_blank" %><br><br>
-    
-    <%= link_to "Review #{m.name} hike", new_mountain_hike_path(m) %><br>
-    <% if @link = current_user.links.where(mountain_id: m.id).first %>   
-        Link saved to profile<br><br><br>
-    <% else %>
-        <%= button_to "Save this hike", mountain_links_path(m, link: { mountain_id: m.id, user_id: current_user.id }) %><br><br><br>
-    <% end %>
-<% end %>
+<%= render partial: 'mountain', collection: @mountains %>
 
 <% if current_user.admin %>
     <%= link_to "Create Mountain", new_mountain_path %>
