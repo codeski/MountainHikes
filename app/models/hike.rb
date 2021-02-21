@@ -7,7 +7,6 @@ class Hike < ApplicationRecord
     validates :percent_hiked, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 100 } 
     validates :rating, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 5 }
     validates :comment, length: { maximum: 300, too_long: "%{count} characters is the maximum allowed" } 
-    validates :user_id, uniqueness: {message: "you've already reviewed this mountainadd"}
 
     def date_hiked_not_in_future
         if date_hiked.present? && date_hiked > Date.today

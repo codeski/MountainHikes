@@ -1,14 +1,13 @@
-    <br><br>
-    Mountain: <%= @hike.mountain.name %><br>
+<h1>Mountain: <%= @hike.mountain.name %></h1><br>
 
-    User's Hike: <%= @hike.user.username %><br>
-    
-    Rating: <%= @hike.rating %><br>
-    Comment: <%= @hike.comment %><br>
-    Date hiked: <%= @hike.date_hiked %><br>
-    Percent hiked: <%= @hike.percent_hiked %><br>
+User's Hike: <%= @hike.user.username %><br>
 
-    <%= link_to "Edit Hike", edit_hike_path(@hike) %><br><br>
-    <%= form_tag(hike_path(@hike.id), method: :delete) do %>
-        <%= submit_tag "Delete Hike"%>
-    <% end %>
+Rating: <%= @hike.rating %><br>
+Comment: <%= @hike.comment %><br>
+Date hiked: <%= @hike.date_hiked %><br>
+Percent hiked: <%= @hike.percent_hiked %><br>
+
+<%= link_to "Edit Hike", edit_hike_path(@hike) %><br><br>
+<%= form_tag(hike_path(@hike.id), method: :delete) do %>
+    <%= submit_tag "Delete Hike"%>
+<% end %>

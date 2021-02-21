@@ -1,0 +1,4 @@
+<%= link_to link.mountain.name, mountain_path(link.mountain) %>
+<%= form_tag(link_path(link), method: :delete) do %>
+    <%= submit_tag "Unsave Link" %>
+<% end %><br>

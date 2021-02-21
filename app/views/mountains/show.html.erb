@@ -1,21 +1,17 @@
-<br><br>
 <h1><%= @mountain.name %><br></h1>
 Rating: <%= @mountain.display_rating %> /5<br>
 City: <%= @mountain.city %><br>
 State: <%= @mountain.state %> <br>
 Summit Elevation: <%= @mountain.summit_elevation %><br>
 Base Elevation: <%= @mountain.base_elevation %> <br>
-Distance: <%= @mountain.hike_distance %><br>
+Distance: <%= @mountain.hike_distance %> miles<br>
 Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><br><br>
 
-<%= link_to "I hiked #{@mountain.name}", new_mountain_hike_path(@mountain) %><br>
+<%= user_review?(current_user, @mountain) %><br>
+<%= user_linked?(current_user, @mountain) %><br>
 
-<% if current_user.admin %>
-    <%= link_to "Edit Mountain", edit_mountain_path(@mountain) %><br>
-    <%= form_tag(mountain_path(@mountain.id), method: :delete) do %>
-        <%= submit_tag "Delete Mountain"%>
-    <% end %><br>
-<% end %>
+<%= admin_mountain_edit(current_user, @mountain) %><br>
+<%= admin_mountain_delete(current_user, @mountain) %>
 
 <h2>Reviews:</h2>
 <p>

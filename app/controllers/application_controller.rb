@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        if current_user
-        else
-          redirect_to '/signin'
-        end
+        !!current_user
     end
 
 end

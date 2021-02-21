@@ -1,26 +1,14 @@
-<br><br>
-Hi, <%= current_user.username %><br><br>
+<h1>Hi, <%= current_user.username %></h1>
 Total Distance: <%= current_user.display_total_distance %><br><br>
 Total Elevation Gain: <%= current_user.display_elevation_gain %><br><br>
 <hr>
-My Hikes: <br>
-<% if current_user.hikes %>
-    <% current_user.hikes.each do |h| %>
-        <%= h.date_hiked %>, <%= link_to h.mountain.name, hike_path(h) %><br>
-    <% end %>
-<% else %>
-    <%= link_to "Find your first mountain to hike", mountains_path %><br><br>
-<% end %><br>
+My Hikes: <%= current_user.hikes.count %> <br>
+
+<%= display_user_hikes(current_user) %>
 
 <hr>
+
 Saved Mountains: <br>
-<% if current_user.links %>
-    <% current_user.links.each do |l| %>
-        <%= link_to l.mountain.name, mountain_path(l.mountain) %><br>
-        <%= form_tag(link_path(l), method: :delete) do %>
-            <%= submit_tag "Unsave Link"%>
-        <% end %><br>
-    <% end %>
-<% else %>
-    You have no saved mountains
-<% end %>
+
+<%= display_saved_links(current_user) %> 
+<hr>

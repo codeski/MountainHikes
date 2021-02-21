@@ -1,9 +1,9 @@
-<br><br>
-All Mountains, list by elevation <br><br>
+<h1>All Mountains</h1>
+<hr>
 
 <%= render partial: 'mountain', collection: @mountains %>
 
-<% if current_user.admin %>
-    <%= link_to "Create Mountain", new_mountain_path %>
-<% end %>
+<%= admin?(current_user) %>
+
+
 

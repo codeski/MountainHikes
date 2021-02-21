@@ -26,4 +26,8 @@ class User < ApplicationRecord
         only_tenth(display)
     end
 
+    def hike?(user, m)
+        user.hikes.where(mountain_id: m.id).first 
+    end
+
 end
