@@ -16,7 +16,7 @@ Directions: <%= link_to "Click", @mountain.directions_url, target: "_blank" %><b
 <h2>Reviews:</h2>
 <p>
 
-<%= render partial: 'hikes/review', collection: @mountain.hikes.order_by_date %>
+<%= display_reviews(@mountain) %>
 
 </p>
 

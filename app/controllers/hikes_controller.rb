@@ -36,7 +36,6 @@ class HikesController < ApplicationController
     end
 
     def update
-        @mountain = Mountain.find_by_id(@hike.mountain_id)
 
         if @hike.update(hike_params)
             @hike.total_distance = @hike.percent_hiked.to_f / 100 * @mountain.hike_distance
@@ -46,7 +45,7 @@ class HikesController < ApplicationController
 
             redirect_to hike_path(@hike)
         else
-            render hike_path(@hike)
+            render :edit
         end
     end
 

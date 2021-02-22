@@ -1,8 +1,4 @@
-<% if review %>
-    <h4><%= review.date_hiked.to_s + " Username: " + review.user.username + ", Rating: " + review.rating.to_s + "/5" %></h4>
+<h4><%= review.date_hiked.to_s + " Username: " + review.user.username + ", Rating: " + review.rating.to_s + "/5" %></h4>
 
-    <%= review.comment %><br><br>
-<% else %>
-    No reviews for this mountain hike
+<%= review.comment %><br><br>
 
-<% end %>
