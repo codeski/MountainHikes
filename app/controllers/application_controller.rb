@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        !!current_user
+        if !!current_user
+        else
+            redirect_to "/home"
+        end
     end
 
 end
+
+
+# should not be able to edit another persons hike

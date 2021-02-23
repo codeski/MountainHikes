@@ -12,19 +12,18 @@ class HikesController < ApplicationController
             @hike = @mountain.hikes.build
         else
             flash[:message] = "Wrong path"
-            redirect_to root_path
+            redirect_to "root_path"
         end
     end
 
     def create
         @mountain = Mountain.find_by_id(params[:mountain_id])
+
         @hike = current_user.hikes.build(hike_params)
         
-        @hike.total_distance = @hike.percent_hiked.to_f / 100 * @mountain.hike_distance
-        elevation_gain = @mountain.summit_elevation - @mountain.base_elevation
-        @hike.total_elevation_gain = @hike.percent_hiked.to_f / 100 * elevation_gain
-        
         if @hike.save
+            @hike.save_hidden_attributes
+
             redirect_to user_path(current_user)
         else
             render :new
@@ -36,13 +35,10 @@ class HikesController < ApplicationController
     end
 
     def update
-
+        
         if @hike.update(hike_params)
-            @hike.total_distance = @hike.percent_hiked.to_f / 100 * @mountain.hike_distance
-            elevation_gain = @mountain.summit_elevation - @mountain.base_elevation
-            @hike.total_elevation_gain = @hike.percent_hiked.to_f / 100 * elevation_gain
-            @hike.save
-
+            @hike.save_hidden_attributes
+            
             redirect_to hike_path(@hike)
         else
             render :edit

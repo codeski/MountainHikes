@@ -17,6 +17,13 @@ class Hike < ApplicationRecord
     def self.order_by_date
         self.order(date_hiked: :desc)
     end
+
+    def save_hidden_attributes
+        self.total_distance = self.percent_hiked.to_f / 100 * self.mountain.hike_distance
+        elevation_gain = self.mountain.summit_elevation - self.mountain.base_elevation
+        self.total_elevation_gain = self.percent_hiked.to_f / 100 * elevation_gain
+        self.save
+    end
     
 
     # def total_distance_elevation(mountain)

@@ -3,7 +3,7 @@
 <% end %>
 
 <% if @hike.errors.any? %>
-  <div id="error_explanation">
+  <div class="field_with_errors">
     <h2><%= pluralize(@hike.errors.count, "error") %> prohibited this hike from being saved:</h2>
 
     <ul>

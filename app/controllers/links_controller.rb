@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
 
-    before_action :set_link, only: :destroy
+    before_action :set_link, :redirect_if_not_owner, only: :destroy
+    before_action :logged_in?
     
 
     def create
@@ -19,6 +20,12 @@ class LinksController < ApplicationController
     private
     def link_params
         params.require(:link).permit(:user_id, :mountain_id)
+    end
+
+    def redirect_if_not_owner
+        if current_user != @link.user
+            redirect_to user_path(current_user), message: "Not your link"
+        end
     end
 
     def set_link

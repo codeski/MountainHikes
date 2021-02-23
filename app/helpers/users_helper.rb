@@ -10,7 +10,7 @@ module UsersHelper
 
     def display_user_hikes(user)
         if user.hikes.count > 0
-            render partial: 'hikes/user_hikelist', collection: user.hikes
+            render partial: 'hikes/user_hikelist', collection: user.hikes.order_by_date
         else 
             link_to "Find your first mountain to hike", mountains_path
         end

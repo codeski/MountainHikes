@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   
   resources :mountains do
     resources :hikes, shallow: true #new, index, create
+    resources :links, shallow: true
   end
 
-  resources :mountains do
-    resources :links, shallow: true #new, index, create
-  end
+  # resources :mountains do
+  #   resources :links, shallow: true #new, index, create
+  # end
 
   get 'home', to: 'users#home'
   

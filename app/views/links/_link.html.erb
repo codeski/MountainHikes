@@ -1,4 +1,4 @@
-<%= link_to link.mountain.name, mountain_path(link.mountain) %>
+<%= link_to link.mountain.name, mountain_path(link.mountain) %>, <%= link.mountain.city + ", " + link.mountain.state %>
 <%= form_tag(link_path(link), method: :delete) do %>
     <%= submit_tag "Unsave Link" %>
 <% end %><br>
