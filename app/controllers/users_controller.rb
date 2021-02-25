@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :logged_in?, except: [:new, :create]
+    before_action :logged_in?, only: [:show]
     def home
 
     end

@@ -15,11 +15,7 @@ Rails.application.routes.draw do
     resources :links, shallow: true
   end
 
-  # resources :mountains do
-  #   resources :links, shallow: true #new, index, create
-  # end
-
-  get 'home', to: 'users#home'
+  get '/home', to: 'users#home'
   
   resources :users, only: [:new, :create, :show]
 
