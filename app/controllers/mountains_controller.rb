@@ -4,7 +4,12 @@ class MountainsController < ApplicationController
     before_action :logged_in?
 
     def index
-        @mountains = Mountain.all
+        if params[:search]
+            @mountains = Mountain.search(params[:search])
+        else
+            @mountains = Mountain.all
+        end
+
     end
 
     def show
@@ -44,7 +49,7 @@ class MountainsController < ApplicationController
 
     private
     def mountain_params
-        params.require(:mountain).permit(:base_elevation, :summit_elevation, :name, :city, :state, :direction_url, :hike_distance)
+        params.require(:mountain).permit(:base_elevation, :summit_elevation, :name, :city, :state, :direction_url, :hike_distance, :search)
     end
 
     def set_mountain

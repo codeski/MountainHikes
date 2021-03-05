@@ -11,4 +11,17 @@ class Mountain < ApplicationRecord
         only_tenth(display)
     end
 
+    def self.search(search)
+        if search
+            mountain = Mountain.find_by(name: search)
+            if mountain
+                self.where(name: search)
+            else
+                Mountain.all
+            end
+        else
+            Mountain.all
+        end
+    end
+
 end

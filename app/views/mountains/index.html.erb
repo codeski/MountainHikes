@@ -1,6 +1,11 @@
 <h1>All Mountains</h1>
 <hr>
 
+<%= form_tag(mountains_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+<% end %>
+
 <%= render partial: 'mountain', collection: @mountains %>
 
 <%= admin?(current_user) %>
